@@ -1,3 +1,5 @@
+require 'date'
+
 class Event
   attr_reader :name, :food_trucks
 
@@ -57,6 +59,10 @@ class Event
     all_items_sold.map do |item|
       item.name
     end.sort
+  end
+
+  def date
+    Date.today.strftime('%d/%m/%Y')
   end
 
 end
