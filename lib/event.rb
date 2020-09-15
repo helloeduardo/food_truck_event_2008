@@ -65,4 +65,11 @@ class Event
     Date.today.strftime('%d/%m/%Y')
   end
 
+  def sell(item, amount)
+    return false if total_inventory[item].nil? #takes care of onion pie
+    return false if total_inventory[item][:quantity] < amount
+    # iterate food trucks that sell item
+    # reduce truck's stock, check next truck if stock reaches 0
+  end
+
 end
