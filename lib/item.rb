@@ -3,7 +3,7 @@ class Item
 
   def initialize(data)
     @name = data[:name]
-    @price = data[:price]
+    @price = data[:price][1..-1].to_f
   end
 
 end
