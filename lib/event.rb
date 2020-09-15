@@ -53,4 +53,10 @@ class Event
     overstocked_items
   end
 
+  def sorted_item_list
+    all_items_sold.map do |item|
+      item.name
+    end.sort
+  end
+
 end
