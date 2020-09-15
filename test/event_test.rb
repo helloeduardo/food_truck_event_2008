@@ -202,10 +202,18 @@ class EventTest < Minitest::Test
     food_truck2.stock(item3, 25)
     food_truck3 = FoodTruck.new("Palisade Peach Shack")
     food_truck3.stock(item1, 65)
-    food_truck3.stock(item3, 10)
     event.add_food_truck(food_truck1)
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
 
+    refute event.sell(item1, 200)
+    refute event.sell(item5, 1)
+
+    assert event.sell(item4, 5)
+    assert_equal 45, food_truck2.check_stock(item4)
+
+    assert event.sell(item1, 40)
+    assert_equal 0, food_truck1.check_stock(item1)
+    assert_equal 60, food_truck3.check_stock(item1)
   end
 end
