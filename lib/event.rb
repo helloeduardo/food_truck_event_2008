@@ -43,4 +43,14 @@ class Event
     total_inventory
   end
 
+  def overstocked_items
+    overstocked_items = []
+    total_inventory.each do |item, item_inventory|
+      if item_inventory[:quantity] > 50 && item_inventory[:food_trucks].count > 1
+        overstocked_items << item
+      end
+    end
+    overstocked_items
+  end
+
 end
